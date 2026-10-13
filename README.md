@@ -127,6 +127,19 @@ Identified IoCs
 | User Account | `deploy` | Rogue account added to sudoers |
 | User Account | `Alice` | Rogue account added to sudoers |
 
+## MITRE ATT&CK Mapping
+
+| Observed Behavior | Tactic | Technique | ID |
+|---|---|---|---|
+| Polkit exploit attempt (incident #1102) | Privilege Escalation | Exploitation for Privilege Escalation | T1068 |
+| Users `Alice`, `backupuser` and `deploy` added to sudo group | Persistence / Privilege Escalation | Account Manipulation | T1098 |
+| Rogue account creation on compromised hosts | Persistence | Create Account: Local Account | T1136.001 |
+| `/etc/shadow` copied to `/tmp/shadow.bak` | Credential Access | OS Credential Dumping: /etc/passwd and /etc/shadow | T1003.008 |
+| Reverse shell to 198.51.100.22:4444 via `/dev/tcp` | Execution / Command and Control | Command and Scripting Interpreter: Unix Shell | T1059.004 |
+| Reverse shell connection to external IP | Command and Control | Non-Standard Port | T1571 |
+| Malicious kernel module `malicious_mod.ko` loaded | Persistence | Boot or Logon Autostart Execution: Kernel Modules and Extensions | T1547.006 |
+| Internal SSH login to `storage-01` from 172.16.0.12 | Lateral Movement | Remote Services: SSH | T1021.004 |
+| Successful root login from external IP 203.0.113.45 on `app-01` | Initial Access / Defense Evasion | Valid Accounts | T1078 |
 
 ## Remediation Steps (Simulated)
 In a real-world scenario, the following actions would be recommended:
